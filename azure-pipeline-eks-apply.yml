@@ -58,10 +58,9 @@ stages:
         kubernetesServiceConnection: 'aws-eks'
         manifests: '$(System.ArtifactsDirectory)/Devops.yaml'
         containers: 'rgomezn/simple-devops:$(tag)'
-
-- task: TerraformTaskV1@0
-  inputs:
-    provider: 'aws'
-    command: 'destroy'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
-    environmentServiceNameAWS: 'TerraformAWS' 
+    - task: TerraformTaskV1@0
+      inputs:
+        provider: 'aws'
+        command: 'destroy'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
+        environmentServiceNameAWS: 'TerraformAWS' 
